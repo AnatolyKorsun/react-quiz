@@ -1,0 +1,16 @@
+.Quiz {
+  display: flex;
+  justify-content: center;
+  padding-top: 100px;
+  flex-grow: 1;
+  width: 100%;
+  background: linear-gradient(
+    200deg,
+    rgba(255, 0, 0, 0%),
+    rgba(128, 128, 128, 100%)
+  );
+}
+
+.QuizWrapper {
+  /* width: 600px; */
+}

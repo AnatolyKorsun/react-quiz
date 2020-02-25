@@ -1,9 +1,8 @@
 
 .Layout {
-  height: 100px;
   display: flex;
   flex-direction: column;
-  background-color:red;
+  min-height: 100vh;
 }
 
 .Layout main {
@@ -11,3 +10,4 @@
   flex-direction: column;
   flex-grow: 1;
 }
+
