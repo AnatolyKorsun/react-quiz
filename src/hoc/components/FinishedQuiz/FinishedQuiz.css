@@ -15,3 +15,13 @@
     border-radius: 5px;
   border: 2px solid grey;
 }
+
+.FinishedQuiz ul li i{
+  margin-left: 10px;
+}
+.success{
+  color:#e69d9d;
+}
+.error{
+  color:#5e815e;
+}
