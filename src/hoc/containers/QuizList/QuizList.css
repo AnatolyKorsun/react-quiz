@@ -1,0 +1,7 @@
+.QuizList{
+    display: flex;
+    justify-content: center;padding-top: 100px;
+    flex-grow: 1;
+    width: 100%;
+    background: linear-gradient(90deg, rgb(175, 173, 173) 0%,rgb(109, 107, 107) 37%);
+}

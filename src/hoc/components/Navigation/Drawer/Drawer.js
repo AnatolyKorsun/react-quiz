@@ -11,6 +11,9 @@ const links =[
     ]
 
 class Drawer extends Component {
+    clickHandler=()=>{
+        this.props.onClose()
+    }
     renderLinks(){
         return links.map((link, index) => {
             return(
@@ -18,6 +21,7 @@ class Drawer extends Component {
                     <NavLink 
                         to={link.to}
                         exact={link.exact}
+                        onClick={this.clickHandler}
                         // activeClassName='active'
                         >                        >
                         {link.label}
