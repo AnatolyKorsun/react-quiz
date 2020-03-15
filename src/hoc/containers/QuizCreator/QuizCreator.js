@@ -9,6 +9,7 @@ import {
   validateForm
 } from "../../../FormFramework/FormFramewokr.js"
 import Auxiliary from "../../../hoc/Auxiliary/Auxiliary.js"
+import axios from 'axios'
 
 function createOptionControl(number) {
   return createControl(
@@ -66,6 +67,7 @@ export default class QuizCreator extends Component {
             {text: option4.value, id: option4.id},
         ] 
     }
+
     quiz.push(questionItem)
     this.setState({
         quiz,
@@ -75,10 +77,29 @@ export default class QuizCreator extends Component {
     })
   }
   
-  createQuizHandler = (event) => {
+  createQuizHandler = async event => {
       event.preventDefault()
-      console.log(this.state);
-      
+
+      try{
+        const response = await axios.post('https://react-quiz-fe0b0.firebaseio.com/quizes.json' , this.state.quiz)
+        console.log(response.data);
+        
+        this.setState({
+          quiz:[],
+          isFormValid: false,
+          rightAnswerId: 1,
+          formControls: createFormControls()
+        })
+      }catch(e){
+        console.log(e);
+        
+      }
+      // Аналогия
+      // axios.post('https://react-quiz-fe0b0.firebaseio.com/quizes.json', this.state.quiz)
+      // .then(response =>{
+      //   console.log(response)
+      // })
+      // .catch(error => console.log(error))
   };
 
   changeHandler = (value, controlName) => {
@@ -122,12 +143,10 @@ export default class QuizCreator extends Component {
     });
   };
 
+
   render() {
-      console.log(this.state);
-      
     const select = (
       <Select
-        // className='choice-select'
         label="Выберте правильный ответ"
         value={this.state.rightAnswerId}
         onChange={this.selectChangeHandler}
@@ -138,7 +157,8 @@ export default class QuizCreator extends Component {
           { text: 4, value: 4 }
         ]}
       />
-    );
+    )
+
     return (
       <div className="QuizCreator">
         <div>
@@ -156,6 +176,7 @@ export default class QuizCreator extends Component {
             >
               Добавить вопрос
             </Button>
+
             <Button 
             type="success" 
             onClick={this.createQuizHandler}
@@ -163,9 +184,10 @@ export default class QuizCreator extends Component {
             >
               Создать тест
             </Button>
+
           </form>
         </div>
       </div>
-    );
+    )
   }
 }
