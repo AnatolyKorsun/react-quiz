@@ -1,4 +1,6 @@
 import React from 'react'
+import './Select.css'
+
 
 const Select = props =>{
     const htmlFor =`${props.label}-${Math.random()}`

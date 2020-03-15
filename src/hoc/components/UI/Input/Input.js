@@ -9,6 +9,9 @@ return !valid && shouldValidate && touched
  const Input = props =>{
     const inputType = props.type || 'text'
     const cls= ['Input']
+    if(isInvalid(props)){cls.push('invalid') }
+        
+        
     const htmlFor=`${inputType}-${Math.random()}`
 
     return(
