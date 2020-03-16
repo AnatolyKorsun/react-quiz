@@ -1,6 +1,5 @@
 import React from "react"
 import "./AnswerItem.css"
-// import classes from './AnswerItem.css'
 
 const AnswerItem = props => {
   const cls = ['AnswerItem']

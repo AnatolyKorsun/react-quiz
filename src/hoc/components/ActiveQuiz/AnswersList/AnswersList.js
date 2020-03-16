@@ -11,11 +11,10 @@ const AnswersList = props => (
           answer={answer}
           onAnswerClick={props.onAnswerClick}
           state={props.state ? props.state[answer.id] : null}
-
         />
-      );
+      )
     })}
   </ul>
-);
+)
 
 export default AnswersList
