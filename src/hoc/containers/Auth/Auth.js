@@ -1,9 +1,9 @@
-import React,{Component} from 'react'
+import React, {Component} from 'react'
 import './Auth.css'
 import Input from '../../components/UI/Input/Input.js'
 import Button from '../../components/UI/Button/Button.js'
 import is from 'is_js'
-
+import axios from 'axios'
 
 export default class Auth extends Component {
     state={
@@ -36,16 +36,43 @@ export default class Auth extends Component {
             }
         }
     }
-    loginHandler =() =>{
 
+  
+    loginHandler = async () => {
+            const authData ={
+                email: this.state.formControls.email.value,
+                password: this.state.formControls.password.value,
+                returnSecureToken: true
+            }
+            try {
+                const response = await axios.post('https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyDqtkqwtNlQBd9-vUKLwlUTt13L2p311Uc', authData)
+
+                console.log('response data', response.data)
+            } catch (e) {
+                console.log(e)
+            }
+        }
+
+    registerHandler = async () =>{
+        const authData = {
+            email: this.state.formControls.email.value,
+            password: this.state.formControls.password.value,
+            returnSecureToken: true
+        }
+        try{
+            const response = await axios.post('https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyDqtkqwtNlQBd9-vUKLwlUTt13L2p311Uc', authData)
+
+            console.log('response data',response.data)
+        }catch(e){
+            console.log(e)
+        }
     }
-    registerHandler =() =>{
-        
-    }
+
     submitHandler =event =>{
         event.preventDefault()
     }
-    validateControl(value, validation){
+
+    validateControl=(value, validation)=>{
         if(!validation){
             return true}
         let isValid= true
@@ -98,6 +125,7 @@ export default class Auth extends Component {
             )
         })  
     }
+
     render() {
         return (
             <div className='Auth'>
@@ -116,7 +144,7 @@ export default class Auth extends Component {
                         {this.renderInputs()}
                     <Button 
                         type='success' 
-                        onClick={this.loginKHandler}
+                        onClick={this.loginHandler}
                         disabled={!this.state.isFormValid}
                         >
                             Войти
