@@ -4,7 +4,7 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import {BrowserRouter} from 'react-router-dom'
-import {creareStore, compose, applyMiddleware} from 'redux'
+import {createStore, compose, applyMiddleware} from 'redux'
 import {Provider} from 'react-redux'
 import rootReducer from './store/reducers/rootReducer.js'
 import thunk from 'redux-thunk'
@@ -18,7 +18,7 @@ const composeEnhancers =
     }) : compose;
 //import compose from redux
 
-const store = creareStore(
+const store = createStore(
     rootReducer,
     composeEnhancers(
         applyMiddleware(thunk)
