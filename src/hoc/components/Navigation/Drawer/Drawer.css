@@ -27,10 +27,9 @@ margin-bottom: 15px;
 }
 
 .Drawer ul li a{
-    color: white;
     font-size: 30px;
     text-decoration: none;
-    background-color: grey;
+    color: grey;
     position: relative;
     padding: 0 20px 10px 20px;
     transition: opacity .3s; 
